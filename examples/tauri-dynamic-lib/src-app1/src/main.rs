@@ -10,7 +10,7 @@ use libloading::{library_filename, Library, Symbol};
 type LibFunctionType1 = fn();
 
 fn main() {
-  let library_path = library_filename("../src-tauri/target/debug/tauri_app");
+  let library_path = library_filename("tauri_app");
   println!("Loading run_tauri() from {:?}", library_path);
 
   unsafe {
