@@ -30,7 +30,9 @@ cd ..
 # Next build the app
 cd src-app1
 cargo build
+cp ../src-tauri/target/debug/libtauri_app.so .
 
+# 
 # Next run the app
 cargo run
 ```
