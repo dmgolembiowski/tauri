@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 use crate::{
-  menu::{CheckMenuItem, MenuEvent, MenuId},
+  menu::{builders::HandlerFn, CheckMenuItem, MenuEvent, MenuId},
   Manager, Runtime,
 };
 
@@ -14,7 +14,7 @@ pub struct CheckMenuItemBuilder<R: Runtime> {
   enabled: bool,
   checked: bool,
   accelerator: Option<String>,
-  handler: Option<Box<dyn Fn(&CheckMenuItem<R>, MenuEvent) + Send + Sync + 'static>>,
+  handler: Option<HandlerFn<CheckMenuItem<R>>>,
 }
 
 impl<R: Runtime> CheckMenuItemBuilder<R> {

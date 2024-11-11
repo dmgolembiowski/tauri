@@ -4,7 +4,7 @@
 
 use crate::{
   image::Image,
-  menu::{IconMenuItem, MenuEvent, MenuId, NativeIcon},
+  menu::{builders::HandlerFn, IconMenuItem, MenuEvent, MenuId, NativeIcon},
   Manager, Runtime,
 };
 
@@ -16,7 +16,7 @@ pub struct IconMenuItemBuilder<'a, R: Runtime> {
   icon: Option<Image<'a>>,
   native_icon: Option<NativeIcon>,
   accelerator: Option<String>,
-  handler: Option<Box<dyn Fn(&IconMenuItem<R>, MenuEvent) + Send + Sync + 'static>>,
+  handler: Option<HandlerFn<IconMenuItem<R>>>,
 }
 
 impl<'a, R: Runtime> IconMenuItemBuilder<'a, R> {

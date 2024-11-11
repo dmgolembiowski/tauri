@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: MIT
 
 use crate::{
-  menu::{MenuEvent, MenuId, MenuItem},
+  menu::{builders::HandlerFn, MenuEvent, MenuId, MenuItem},
   Manager, Runtime,
 };
 
@@ -13,7 +13,7 @@ pub struct MenuItemBuilder<R: Runtime> {
   text: String,
   enabled: bool,
   accelerator: Option<String>,
-  handler: Option<Box<dyn Fn(&MenuItem<R>, MenuEvent) + Send + Sync + 'static>>,
+  handler: Option<HandlerFn<MenuItem<R>>>,
 }
 
 impl<R: Runtime> MenuItemBuilder<R> {
